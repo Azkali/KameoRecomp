@@ -1,54 +1,48 @@
-# Fable 2 Recomp
+# Kameo Recomp
 
-**Fable2Recomp** is a recompilation Project with hopes to port the game Fable 2 to Windows and Linux. It uses a static recompilation approach based on the [ReXGlue](https://github.com/rexglue/rexglue-sdk) project, streamlining the process and fixing various issues that may arise during decompilation and recompilation.
+**KameoRecomp** is a recompilation project that ports
+[Kameo: Elements of Power](https://en.wikipedia.org/wiki/Kameo:_Elements_of_Power)
+to Windows and Linux on x86_64 and ARM64. It uses the static recompilation
+approach provided by the [ReXGlue SDK](https://github.com/rexglue/rexglue-sdk).
 
-This Recomp is currently based off [Fable 2](https://en.wikipedia.org/wiki/Fable_II) GOTY TU1
+The starter scaffolding is forked from
+[Fable2Recomp](https://github.com/Fable2Recomp/Fable2Recomp), with all
+Fable-2-specific function patches removed.
 
-## Features
-- User-friendly interface for ease of use.
-- Plans for enhancing the game with high-resolution support up to 1080p, 2K, 4K, and beyond.
-- Plans for improving the frame rate to 60fps and beyond, reaching up to 240fps.
-- Enhanced graphics for a superior gaming experience.
-- Cross architecture and OS - (x86_64, ARM) (Windows, Linux, Mac, Android?)
+## Building
 
-## Building Fable2Recomp
+### Prerequisites
 
-### Installing the ReXGlue SDK
-Download the latest release and extract it to a location of your choice. This will be your `REXSDK` path. Set this as an environment variable using your preferred method.
-
-### Prerequisites (non-Visual Studio users only)
-
-- Clang 20
-- CMake
+- Clang 18 or newer
+- CMake 3.25+
 - Ninja
-- [vcpkg](https://github.com/microsoft/vcpkg)
-- Latest Release from [Releases](https://github.com/rexglue/rexglue-sdk/releases)
+- A built/installed `rexglue-sdk` (see its README)
 
-#### Building from source
+### Game assets
 
-```bash
-git clone --recursive https://github.com/rexglue/rexglue-sdk
-cd rexglue
-cmake --preset <platform>
-cmake --build out/build/<platform> --target install
+Extract the Kameo ISO with [extract-xiso](https://github.com/XboxDev/extract-xiso)
+so that `default.xex` and the rest of the game files end up under:
+
+```
+KameoRecomp/assets/game/
 ```
 
-Where `<platform>` is `win-amd64` or `linux-amd64`. The build step compiles all configurations (Debug, Release, RelWithDebInfo) at once.
-
-### Fable 2 Project configuration
-
-To build Fable 2, run codegen from the root with all assests in the assets folder and build:
+### Configure & build
 
 ```bash
-git clone --recursive https://github.com/Fable2Recomp/Fable2Recomp.git
-cd Fable2Recomp
-rexglue codegen Fable-2_config.toml
-cmake --preset <platform>
-cmake --build out/build/<platform>
+# Generate the recompiled C++ from default.xex
+rexglue codegen Kameo_config.toml
+
+# Configure the project
+cmake --preset linux-amd64-relwithdebinfo \
+    -DREXSDK_DIR=/path/to/rexglue-sdk
+
+# Build
+cmake --build out/build/linux-amd64-relwithdebinfo
 ```
 
-## Contributing
-We are looking for help and we are willing to learn coding and help where we can, we are also open to others joining the project and teaching us if possible. If you have experience or are willing to learn and help out, your support would be greatly appreciated. We're eager to enhance the game with high-resolution support, improved frame rates, and enhanced graphics.
+## Status
 
-We welcome contributions to Fable2Recomp! If you're interested in enhancing Fable 2 and have the skills or willingness to learn, please join us. Feel free to open a PR if you want to contribute.
-Join the Discord server at https://discord.gg/zVVtGbEsCR
+Early bring-up. Codegen runs against Kameo's `default.xex` and produces a
+linkable target. Most kernel imports are stubbed in `src/hooks.cpp`; expect
+to add game-specific patches as functions are exercised at runtime.

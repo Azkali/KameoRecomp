@@ -1,0 +1,46 @@
+# Kameo - ReXGlue Codegen Configuration
+
+project_name = "Kameo"
+file_path = "assets/game/default.xex"
+out_directory_path = "generated"
+
+# Most function discovery is handled by the multi-pass gap-fill improvement
+# upstream in rexglue-sdk. The hints below cover small thunks that the
+# gap-fill phase still absorbs because their parent function's discoverBlocks
+# walks a `b` instruction into them as an internal jump (the parent grows
+# multi-block to span them) — vtable / function-pointer dispatch needs them
+# as standalone entries.
+[functions]
+0x822F9158 = {}
+0x82310CE0 = { size = 0x14 }
+0x826BC698 = { size = 0x10 }
+
+# Thunks in the 0x82319000..0x8231B000 region. Identified by dumping the
+# region from the live process and decoding post-terminator addresses
+# (blr/bctr/unconditional `b`). The codegen GAP_FILL phase absorbs these
+# into a multi-block parent because the parent's `b` to them is treated
+# as an internal jump (gap-fill entries are not in knownFunctions during
+# discoverBlocks).
+0x823190B4 = {}
+0x82319228 = {}
+0x82319238 = {}
+0x82319248 = {}
+0x8231932C = {}
+0x82319460 = {}
+0x82319AF0 = {}
+0x82319BC4 = {}
+0x82319C1C = {}
+0x82319CC4 = {}
+0x82319D00 = {}
+0x82319D4C = {}
+0x82319D74 = {}
+0x82319DE8 = {}
+0x82319A80 = {}
+0x82319E30 = {}
+0x82319F18 = {}
+0x8231A938 = {}
+0x8231AA00 = {}
+0x8231AA60 = {}
+0x8231AAA0 = {}
+0x8231AACC = {}
+0x8231AAFC = {}
