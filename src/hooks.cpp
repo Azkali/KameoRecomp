@@ -13,6 +13,7 @@
 #include "generated/Kameo_init.h"
 
 #include <atomic>
+#include <chrono>
 
 #include <rex/hook.h>
 #include <rex/logging.h>
@@ -25,6 +26,7 @@
 REX_EXTERN(__imp__sub_820D2E10);
 REX_EXTERN(__imp__sub_820D4BA0);
 REX_EXTERN(__imp__sub_825F8A50);
+
 
 //=============================================================================
 // NULL-deref bypasses (load-bearing)

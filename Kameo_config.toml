@@ -3,6 +3,12 @@
 project_name = "Kameo"
 file_path = "assets/game/default.xex"
 out_directory_path = "generated"
+window_width = 2560
+window_height = 1440
+fullscreen = true
+present_fsr_quality_mode = "nativeaa"
+present_effect = "fsr3"
+resolution_upscale = 2
 
 # Most function discovery is handled by the multi-pass gap-fill improvement
 # upstream in rexglue-sdk. The hints below cover small thunks that the
