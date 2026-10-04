@@ -1,22 +1,14 @@
-# Kameo - ReXGlue Codegen Configuration
+[project]
+name = "Kameo"
+sdk_version = "0.10.0"
+game_root = "assets/game"
 
-project_name = "Kameo"
+[entrypoint]
 file_path = "assets/game/default.xex"
-out_directory_path = "generated"
-window_width = 2560
-window_height = 1440
-fullscreen = true
-present_fsr_quality_mode = "nativeaa"
-present_effect = "fsr3"
-resolution_upscale = 2
+out_directory_path = "generated/default"
+includes = []
 
-# Most function discovery is handled by the multi-pass gap-fill improvement
-# upstream in rexglue-sdk. The hints below cover small thunks that the
-# gap-fill phase still absorbs because their parent function's discoverBlocks
-# walks a `b` instruction into them as an internal jump (the parent grows
-# multi-block to span them) — vtable / function-pointer dispatch needs them
-# as standalone entries.
-[functions]
+[entrypoint.functions]
 0x822F9158 = {}
 0x82310CE0 = { size = 0x14 }
 0x826BC698 = { size = 0x10 }

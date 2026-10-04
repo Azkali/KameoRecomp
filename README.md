@@ -16,7 +16,7 @@ Fable-2-specific function patches removed.
 - Clang 18 or newer
 - CMake 3.25+
 - Ninja
-- A built/installed `rexglue-sdk` (see its README)
+- A built/installed `rexglue-sdk` 0.10 or newer (see its README)
 
 ### Game assets
 
@@ -31,7 +31,8 @@ KameoRecomp/assets/game/
 
 ```bash
 # Generate the recompiled C++ from default.xex
-rexglue codegen Kameo_config.toml
+# (also writes generated/rexglue.cmake, which CMakeLists.txt includes)
+rexglue codegen Kameo_manifest.toml
 
 # Configure the project
 cmake --preset linux-amd64-relwithdebinfo \

@@ -10,7 +10,7 @@
  *              See LICENSE file in the project root for full license text.
  */
 
-#include "generated/Kameo_init.h"
+#include "generated/default/Kameo_init.h"
 
 #include <atomic>
 #include <chrono>
@@ -95,25 +95,25 @@ REX_HOOK_RAW(sub_820D4BA0) {
 // Each is a no-op so the module links; promote to a real implementation as
 // the title needs it.
 
-PPC_STUB(__imp__XamShowGamerCardUIForXUID);
-PPC_STUB(__imp__XamShowAchievementsUI);
-PPC_STUB(__imp__XamShowMarketplaceUI);
-PPC_STUB(__imp__IoInvalidDeviceRequest);
-PPC_STUB(__imp__ObReferenceObject);
-PPC_STUB(__imp__IoDeleteDevice);
-PPC_STUB(__imp__IoCompleteRequest);
-PPC_STUB(__imp__RtlUpcaseUnicodeChar);
-PPC_STUB(__imp__ObIsTitleObject);
-PPC_STUB(__imp__IoCheckShareAccess);
-PPC_STUB(__imp__IoRemoveShareAccess);
-PPC_STUB(__imp__XNetLogonGetTitleID);
-PPC_STUB(__imp__NetDll_WSAGetOverlappedResult);
-PPC_STUB(__imp__NetDll_XNetRegisterKey);
-PPC_STUB(__imp__NetDll_XNetUnregisterKey);
-PPC_STUB(__imp__NetDll_XNetUnregisterInAddr);
-PPC_STUB(__imp__NetDll_XNetConnect);
-PPC_STUB(__imp__NetDll_XNetGetConnectStatus);
-PPC_STUB(__imp__IoSetShareAccess);
-PPC_STUB(__imp__XamUserGetMembershipTierFromXUID);
-PPC_STUB(__imp__XamUserGetOnlineCountryFromXUID);
-PPC_STUB(__imp__XamVoiceSubmitPacket);
+REX_STUB(__imp__XamShowGamerCardUIForXUID);
+REX_STUB(__imp__XamShowAchievementsUI);
+REX_STUB(__imp__XamShowMarketplaceUI);
+REX_STUB(__imp__IoInvalidDeviceRequest);
+REX_STUB(__imp__ObReferenceObject);
+REX_STUB(__imp__IoDeleteDevice);
+REX_STUB(__imp__IoCompleteRequest);
+REX_STUB(__imp__RtlUpcaseUnicodeChar);
+REX_STUB(__imp__ObIsTitleObject);
+REX_STUB(__imp__IoCheckShareAccess);
+REX_STUB(__imp__IoRemoveShareAccess);
+REX_STUB(__imp__XNetLogonGetTitleID);
+REX_STUB(__imp__NetDll_WSAGetOverlappedResult);
+REX_STUB(__imp__NetDll_XNetRegisterKey);
+REX_STUB(__imp__NetDll_XNetUnregisterKey);
+REX_STUB(__imp__NetDll_XNetUnregisterInAddr);
+REX_STUB(__imp__NetDll_XNetConnect);
+REX_STUB(__imp__NetDll_XNetGetConnectStatus);
+REX_STUB(__imp__IoSetShareAccess);
+REX_STUB(__imp__XamUserGetMembershipTierFromXUID);
+REX_STUB(__imp__XamUserGetOnlineCountryFromXUID);
+REX_STUB(__imp__XamVoiceSubmitPacket);
